@@ -1,0 +1,42 @@
+name: HashiCorp Vault Secrets
+author: Arky Asmal
+description: Access secrets stored on HashiCorp Vault Secrets, in the HashiCorp Cloud Platform.
+branding:
+  icon: "briefcase"
+  color: "black"
+inputs:
+  CLIENT_ID:
+    default: ""
+    description: Client ID of the HashiCorp Cloud Service Principal/User
+    required: true
+  CLIENT_SECRET:
+    default: ""
+    description: Client Secret of the HashiCorp Cloud Service Principal/User
+    required: true
+  ORGANIZATION_ID:
+    default: ""
+    description: ID of the HashiCorp Cloud Organization
+    required: true
+  PROJECT_ID:
+    default: ""
+    description: ID of project deployed on HashiCorp Cloud Platform
+    required: true
+  APP_NAME:
+    default: ""
+    description: Name of app deployed on HashiCorp Cloud Platform, using HashiCorp Vault Secrets
+    required: true
+  SECRET_NAMES:
+    default: "[]"
+    description: a list of secret names, in an app using HashiCorp Vault Secrets
+    required: false
+  GENERATE_ENV:
+    default: ""
+    description: The name of the .env file to be generated. If not set, no .env is generated. By default this is not set.
+    required: false
+  ALL_SECRETS:
+    default: "false"
+    description: If set to true, all secrets are retrieved, otherwise only the secrets specified in SECRET_NAMES are retrieved.
+    required: false
+runs:
+  using: "node20"
+  main: "dist/action/index.js"
